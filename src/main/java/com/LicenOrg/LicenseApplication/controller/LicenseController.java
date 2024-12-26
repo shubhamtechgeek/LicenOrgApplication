@@ -1,10 +1,12 @@
-package com.LicenOrg.Application.controller;
+package com.LicenOrg.LicenseApplication.controller;
 
-import com.LicenOrg.Application.model.License;
-import com.LicenOrg.Application.service.LicenseService;
+import com.LicenOrg.LicenseApplication.model.License;
+import com.LicenOrg.LicenseApplication.service.LicenseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Locale;
 
 @RestController
 @RequestMapping(value="v1/organization/{organizationId}/license")
@@ -26,22 +28,30 @@ public class LicenseController {
     public ResponseEntity<String> updateLicense(
             @PathVariable("organizationId")
             String organizationId,
-            @RequestBody License request) {
+            @RequestBody License request,
+            @RequestHeader(value = "Accept-Language",required = false)
+            Locale locale) {
         return ResponseEntity.ok(licenseService.updateLicense(request,
-                organizationId));
+                organizationId, locale));
     }
+
     @PostMapping
     public ResponseEntity<String> createLicense(
             @PathVariable("organizationId") String organizationId,
-            @RequestBody License request) {
-        return ResponseEntity.ok(licenseService.createLicense(request,
-                organizationId));
+            @RequestBody License request,
+            @RequestHeader(value = "Accept-Language",required = false)
+            Locale locale){
+        return ResponseEntity.ok(licenseService.createLicense(
+                request, organizationId, locale));
     }
+
     @DeleteMapping(value="/{licenseId}")
     public ResponseEntity<String> deleteLicense(
             @PathVariable("organizationId") String organizationId,
-            @PathVariable("licenseId") String licenseId) {
+            @PathVariable("licenseId") String licenseId,
+            @RequestHeader(value = "Accept-Language", required = false)
+            Locale locale) {
         return ResponseEntity.ok(licenseService.deleteLicense(licenseId,
-                organizationId));
+                organizationId, locale));
     }
 }

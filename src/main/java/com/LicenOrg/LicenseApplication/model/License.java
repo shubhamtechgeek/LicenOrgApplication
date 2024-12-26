@@ -1,4 +1,4 @@
-package com.LicenOrg.Application.model;
+package com.LicenOrg.LicenseApplication.model;
 
 import lombok.Getter;
 import lombok.Setter;

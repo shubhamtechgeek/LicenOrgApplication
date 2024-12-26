@@ -11,7 +11,7 @@
 	<groupId>com.LicenOrg</groupId>
 	<artifactId>License</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Application</name>
+	<name>LicenseApplication</name>
 	<description>Spring Microservices In Action</description>
 	<url/>
 	<licenses>
