@@ -1,13 +1,13 @@
 package com.LicenOrg.LicenseApplication.model;
 
+import org.springframework.hateoas.RepresentationModel;
+
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-@Getter
-@Setter
-@ToString
-public class License {
+@Getter @Setter @ToString
+public class License extends RepresentationModel<License> {
 
     private int id;
     private String licenseId;
@@ -15,5 +15,4 @@ public class License {
     private String organizationId;
     private String productName;
     private String licenseType;
-
 }
